@@ -16,7 +16,7 @@
     "sonarqube": false,
     "bdd": false,
     "syntaxCheck": true,
-    "edtValidate": false,
+    "edtValidate": true,
     "smoke": false,
     "yaxunit": false,
     "email": false,
