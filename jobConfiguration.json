@@ -1,18 +1,18 @@
 {
   "$schema": "schema.json",
-  "v8version": "8.3",
+  "v8version": "8.3.27.1606",
   "edtVersion": "",
   "srcDir": "cf",
   "sourceFormat": "designer",
   "defaultBranch": "main",
   "secrets": {
-    "storagePath": "UNKNOWN_ID",
-    "storage": "UNKNOWN_ID",
+    "storagePath": "101",
+    "storage": "100",
     "telegramBotToken": "UNKNOWN_ID",
     "telegramChatId": "UNKNOWN_ID"
   },
   "stages": {
-    "initSteps": false,
+    "initSteps": true,
     "sonarqube": false,
     "bdd": false,
     "syntaxCheck": false,
