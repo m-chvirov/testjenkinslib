@@ -1,13 +1,171 @@
 {
-    "$schema": "https://raw.githubusercontent.com/firstBitMarksistskaya/jenkins-lib/master/resources/schema.json",
-    "v8version": "8.3.23.1606",
-    "secrets": {
-        "storagePath": "f7b21c02-711a-4883-81c5-d429454e3f8b",
-        "storage" : "c1fc5f33-67d4-493f-a2a4-97d3040e4b8c"
+  "$schema": "schema.json",
+  "v8version": "8.3",
+  "edtVersion": "",
+  "srcDir": "src/cf",
+  "sourceFormat": "designer",
+  "defaultBranch": "main",
+  "secrets": {
+    "storagePath": "UNKNOWN_ID",
+    "storage": "UNKNOWN_ID",
+    "telegramBotToken": "UNKNOWN_ID",
+    "telegramChatId": "UNKNOWN_ID"
+  },
+  "stages": {
+    "initSteps": false,
+    "sonarqube": false,
+    "bdd": false,
+    "syntaxCheck": false,
+    "edtValidate": false,
+    "smoke": false,
+    "yaxunit": false,
+    "email": false,
+    "telegram": false
+  },
+  "timeout": {
+    "smoke": 240,
+    "yaxunit": 240,
+    "bdd": 120,
+    "getBinaries": 60,
+    "createInfoBase": 60,
+    "loadConfiguration": 60,
+    "designerToEdtFormatTransformation": 60,
+    "edtToDesignerFormatTransformation": 60,
+    "edtValidate": 240,
+    "initInfoBase": 60,
+    "loadExtensions": 60,
+    "resultTransformation": 10,
+    "sonarqube": 90,
+    "syntaxCheck": 240,
+    "zipInfoBase": 60
+  },
+  "initInfobase": {
+    "initMethod": "fromStorage",
+    "runMigration": true,
+    "additionalInitializationSteps": [],
+    "templateDBPath": "",
+    "vrunnerSettings": "./tools/vrunner.json",
+    "archiveInfobase": {
+      "onAlways": false,
+      "onFailure": false,
+      "onUnstable": false,
+      "onSuccess": false
     },
-    "stages": {
-        "sonarqube": true,
-        "edtValidate": true,
-        "syntaxCheck": true
+    "extensions": []
+  },
+  "bdd": {
+    "vrunnerSteps": [
+      "vanessa --settings ./tools/vrunner.json"
+    ],
+    "archiveInfobase": {
+      "onAlways": false,
+      "onFailure": false,
+      "onUnstable": false,
+      "onSuccess": false
+    },
+    "coverage": false,
+    "dbgsPort": 1550
+  },
+  "sonarqube": {
+    "sonarQubeInstallation": "",
+    "useSonarScannerFromPath": true,
+    "sonarScannerToolName": "sonar-scanner",
+    "infoBaseUpdateModuleName": "",
+    "branchAnalysisConfiguration": "fromEnv",
+    "waitForQualityGate": false
+  },
+  "syntaxCheck": {
+    "groupErrorsByMetadata": true,
+    "exceptionFile": "./tools/syntax-check-exception-file.txt",
+    "checkModes": [
+      "-ThinClient",
+      "-WebClient",
+      "-Server",
+      "-ExtendedModulesCheck",
+      "-IncorrectReferences",
+      "-UnreferenceProcedures",
+      "-HandlersExistence",
+      "-EmptyHandlers",
+      "-CheckUseModality",
+      "-CheckUseSynchronousCalls",
+      "-DistributiveModules"
+    ],
+    "vrunnerSettings": "./tools/vrunner.json",
+    "publishToAllureReport": false,
+    "publishToJUnitReport": true
+  },
+  "smoke": {
+    "vrunnerSettings": "./tools/vrunner.json",
+    "xddConfigPath": "./tools/xUnitParams.json",
+    "publishToAllureReport": false,
+    "publishToJUnitReport": true,
+    "coverage": false,
+    "dbgsPort": 1550
+  },
+  "coverage": {
+    "dbgsPath": "",
+    "coverage41CPath": "Coverage41C"
+  },
+  "yaxunit": {
+    "vrunnerSettings": "./tools/vrunner.json",
+    "configPath": "./tools/yaxunit.json",
+    "publishToAllureReport": false,
+    "publishToJUnitReport": true,
+    "coverage": false,
+    "dbgsPort": 1550
+  },
+  "resultsTransform": {
+    "transformer": "stebi",
+    "genericIssueFormat": "Generic_Issue_10_3",
+    "removeSupport": true,
+    "supportLevel": 0
+  },
+  "notifications": {
+    "email": {
+      "onAlways": false,
+      "onFailure": true,
+      "onUnstable": false,
+      "onSuccess": false,
+      "alwaysOptions": {
+        "attachLog": true,
+        "directRecipients": [],
+        "recipientProviders": [
+          "developers",
+          "requestor"
+        ]
+      },
+      "failureOptions": {
+        "attachLog": true,
+        "directRecipients": [],
+        "recipientProviders": [
+          "developers",
+          "requestor",
+          "brokenBuildSuspects"
+        ]
+      },
+      "successOptions": {
+        "attachLog": false,
+        "directRecipients": [],
+        "recipientProviders": [
+          "developers",
+          "requestor"
+        ]
+      },
+      "unstableOptions": {
+        "attachLog": false,
+        "directRecipients": [],
+        "recipientProviders": [
+          "developers",
+          "requestor"
+        ]
+      }
+    },
+    "telegram": {
+      "onAlways": true,
+      "onFailure": false,
+      "onUnstable": false,
+      "onSuccess": false
     }
+  },
+  "logosConfig": ""
 }
