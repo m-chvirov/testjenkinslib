@@ -1,7 +1,7 @@
 {
   "$schema": "schema.json",
   "v8version": "8.3.27.1606",
-  "edtVersion": "",
+  "edtVersion": "2024.2.6.7",
   "srcDir": "cf",
   "sourceFormat": "designer",
   "defaultBranch": "main",
