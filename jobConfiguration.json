@@ -2,7 +2,7 @@
   "$schema": "schema.json",
   "v8version": "8.3",
   "edtVersion": "",
-  "srcDir": "src/cf",
+  "srcDir": "cf",
   "sourceFormat": "designer",
   "defaultBranch": "main",
   "secrets": {
