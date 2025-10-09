@@ -91,7 +91,7 @@
       "-DistributiveModules"
     ],
     "vrunnerSettings": "./tools/vrunner.json",
-    "publishToAllureReport": false,
+    "publishToAllureReport": true,
     "publishToJUnitReport": true
   },
   "smoke": {
